@@ -1,5 +1,6 @@
 class Basket
-  def initialize
+  def initialize(promotion_rules)
+    @promotion_rules = promotion_rules
     @products = []
   end
 
@@ -12,5 +13,5 @@ class Basket
     products.reduce(0) { |sum, product| sum + product.price }
   end
 
-  attr_reader :products
+  attr_reader :promotion_rules, :products
 end

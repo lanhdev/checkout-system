@@ -1,7 +1,6 @@
 class Checkout
   def initialize(promotion_rules)
-    @promotion_rules = promotion_rules
-    @basket = Basket.new
+    @basket = Basket.new(promotion_rules)
   end
 
   def scan(item)
@@ -12,5 +11,5 @@ class Checkout
     '£%.2f' % basket.total_price
   end
 
-  attr_reader :promotion_rules, :basket
+  attr_reader :basket
 end
