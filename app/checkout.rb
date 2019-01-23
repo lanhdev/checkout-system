@@ -1,10 +1,11 @@
 class Checkout
-  def initialize(promotion_rules)
-    @basket = Basket.new(promotion_rules)
+  def initialize(promotions)
+    @basket = Basket.new(promotions)
   end
 
-  def scan(item)
-    basket.add_product(item)
+  def scan(code)
+    product = Product.new(code)
+    basket.add_product(product)
   end
 
   def total
