@@ -13,6 +13,10 @@ module Discount
       0
     end
 
+    def discount_type
+      TYPE
+    end
+
     private
 
     def total_price
