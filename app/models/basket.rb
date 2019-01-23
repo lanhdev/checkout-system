@@ -13,5 +13,11 @@ class Basket
     products.reduce(0) { |sum, product| sum + product.price }
   end
 
-  attr_reader :promotions, :products
+  private
+
+  attr_reader :products
+
+  def promotions
+    @promotions.sort! { |x, y| x.discount_type <=> y.discount_type }
+  end
 end
