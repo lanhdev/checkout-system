@@ -2,10 +2,10 @@ module Discount
   class Base
     TYPE = { multiple: 1, percentage: 2 }
 
-    def initialize(products, type, code = nil)
+    def initialize(products, type, options = {})
       @products = products
       @type = type
-      @code = code
+      @options = options
     end
 
     def discount
@@ -16,6 +16,8 @@ module Discount
       TYPE[type.to_sym]
     end
 
-    attr_reader :type
+    private
+
+    attr_reader :products, :type, :options
   end
 end
