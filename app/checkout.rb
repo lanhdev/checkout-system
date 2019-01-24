@@ -9,7 +9,7 @@ class Checkout
   end
 
   def total
-    '£%.2f' % basket.total_price
+    '£%.2f' % basket.total
   end
 
   attr_reader :basket
