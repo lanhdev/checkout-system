@@ -1,20 +1,9 @@
 
 module Discount
-  class MultipleProduct
-    TYPE = 1
-    APPLIED_PRODUCTS = { 'Lavender heart': 8.5 }
-
-    def initialize(products)
-      @products = products
-    end
-
+  class Multiple < Discount::Base
     def discount
       return total_price - total_new_price if is_applicable_discount?
       0
-    end
-
-    def discount_type
-      TYPE
     end
 
     private

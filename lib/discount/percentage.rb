@@ -1,18 +1,8 @@
 module Discount
-  class Percentage
-    TYPE = 2
-
-    def initialize(products)
-      @products = products
-    end
-
+  class Percentage < Discount::Base
     def discount
       return percentage_off if is_applicable_discount?
       0
-    end
-
-    def discount_type
-      TYPE
     end
 
     private
