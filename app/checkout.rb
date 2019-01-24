@@ -10,7 +10,7 @@ class Checkout
   end
 
   def total
-    '£%.2f' % (total_price - discount)
+    FormatNumber.new(total_price - discount).format_pound
   end
 
   private

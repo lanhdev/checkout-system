@@ -3,8 +3,8 @@ class FormatNumber
     @number = number
   end
 
-  def format_precision
-    "%.2f" % number
+  def format_pound
+    '£%.2f' % number
   end
 
   private
