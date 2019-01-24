@@ -1,12 +1,12 @@
-describe Discount::Percentage do
+describe Discount::Multiple do
   describe '#discount' do
     let(:product1) { Product.new('001') }
     let(:product2) { Product.new('002') }
     let(:product3) { Product.new('003') }
-    let(:options) { { threshold: 55, percentage: 15 } }
+    let(:options) { { products: {'Lavender heart': 8.5} } }
 
-    context 'total price is less than threshold' do
-      let(:products) { [product1, product2] }
+    context 'there is only one discounted product in the basket' do
+      let(:products) { [product1, product2, product3] }
       let(:subject) { described_class.new(products, options) }
 
       it 'does not discount' do
@@ -14,12 +14,12 @@ describe Discount::Percentage do
       end
     end
 
-    context 'total price is larger than threshold' do
-      let(:products) { [product1, product2, product3] }
+    context 'there are 2 discounted products in the basket' do
+      let(:products) { [product1, product2, product3, product1] }
       let(:subject) { described_class.new(products, options) }
 
       it 'applies discount' do
-        expect(subject.discount).to eq(11.13)
+        expect(subject.discount).to eq(1.5)
       end
     end
   end
