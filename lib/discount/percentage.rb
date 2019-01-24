@@ -12,11 +12,23 @@ module Discount
     end
 
     def is_applicable_discount?
-      total_price > 60
+      total_price > threshold
     end
 
     def percentage_off
-      (total_price * 10) / 100
+      (total_price * percentage) / 100
+    end
+
+    def threshold
+      threshold = options.fetch(:threshold, nil)
+      raise 'You must set a threshold to apply discount' if threshold.nil?
+      threshold
+    end
+
+    def percentage
+      percentage = options.fetch(:percentage, nil)
+      raise 'You must set a percentage to apply discount' if percentage.nil?
+      percentage
     end
   end
 end
