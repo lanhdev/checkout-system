@@ -38,6 +38,22 @@ Basket: 001,002,001,003
 Total price expected: £73.76
 ```
 
+## DESIGN
+
+[1] The coding test is designed with 2 main classes:
+- `Product` represents for an item of the checkout.
+- `Checkout` scan item and calculates total price based on promotional rules.
+
+[2] Additionally, there are some helpers:
+- `FormatNumber` is used to format the checkout result
+- `Discount::Base` is used to create promotional rules based on type
+- `Discount::Multiple` is used in case of buying 2 or more products
+- `Discount::Percentage` is used in case of spending more than a threshold value
+
+[3] Unit tests are also implemented
+- Run all specs: `rspec`
+- Run specific spec: `rspec spec/<spec_file>.rb`
+
 ## HOW TO RUN
 
 - Create promotions
@@ -63,19 +79,3 @@ checkout.scan('003')
 ```ruby
 p checkout.total
 ```
-
-## DESIGN
-
-[1] The coding test is designed with 2 main classes:
-- `Product` represents for an item of the checkout.
-- `Checkout` scan item and calculates total price based on promotional rules.
-
-[2] Additionally, there are some helpers:
-- `FormatNumber` is used to format the checkout result
-- `Discount::Base` is used to create promotional rules based on type
-- `Discount::Multiple` is used in case of buying 2 or more products
-- `Discount::Percentage` is used in case of spending more than a threshold value
-
-[3] Unit tests are also implemented
-- Run all specs: `rspec`
-- Run specific spec: `rspec spec/<spec_file>.rb`
