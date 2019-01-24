@@ -4,5 +4,6 @@ class Product
     @price = Products::PRODUCTS[code.to_sym][:price]
   end
 
-  attr_reader :name, :price
+  attr_reader :name
+  attr_accessor :price
 end

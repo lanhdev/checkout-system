@@ -13,6 +13,10 @@ class Basket
     products.reduce(0) { |sum, product| sum + product.price }
   end
 
+  def discount
+    promotions.reduce(0) { |discount, promotion| discount += promotion.discount }
+  end
+
   private
 
   attr_reader :products
