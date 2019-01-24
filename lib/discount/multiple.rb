@@ -1,12 +1,19 @@
 
 module Discount
   class Multiple < Discount::Base
+    def initialize(products, options = {})
+      @products = products
+      @options = options
+    end
+
     def discount
       return total_price_drop if is_applicable_discount?
       0
     end
 
     private
+
+    attr_reader :products, :options
 
     def total_price_drop
       total_price_drop = total_price - total_new_price

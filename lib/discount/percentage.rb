@@ -1,11 +1,18 @@
 module Discount
   class Percentage < Discount::Base
+    def initialize(products, options = {})
+      @products = products
+      @options = options
+    end
+
     def discount
       return percentage_off if is_applicable_discount?
       0
     end
 
     private
+
+    attr_reader :products, :options
 
     def total_price
       products.reduce(0) { |sum, product| sum + product.price }
