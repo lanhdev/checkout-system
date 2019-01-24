@@ -22,7 +22,7 @@ class Basket
   end
 
   def discount
-    promotions.reduce(0) { |discount, promotion| discount += promotion.discount }
+    promotions.reduce(0) { |discount, promotion| discount += promotion.apply(products) }
   end
 
   def promotions
