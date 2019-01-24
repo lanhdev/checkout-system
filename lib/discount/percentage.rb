@@ -8,7 +8,7 @@ module Discount
     private
 
     def total_price
-      @products.reduce(0) { |sum, product| sum + product.price }
+      products.reduce(0) { |sum, product| sum + product.price }
     end
 
     def is_applicable_discount?

@@ -9,21 +9,25 @@ module Discount
     private
 
     def total_price
-      applied_products.reduce(0) { |sum, product| sum + product.price }
+      selected_products.reduce(0) { |sum, product| sum + product.price }
     end
 
     def total_new_price
-      applied_products.reduce(0) { |sum, product| sum + APPLIED_PRODUCTS[product.name.to_sym] }
+      selected_products.reduce(0) { |sum, product| sum + applied_products[product.name.to_sym] }
     end
 
     def is_applicable_discount?
-      applied_products.size >= 2
+      selected_products.size >= 2
+    end
+
+    def selected_products
+      products.select { |product| applied_products.keys.map(&:to_s).include?(product.name) }
     end
 
     def applied_products
-      @products.select do |product|
-        APPLIED_PRODUCTS.keys.map(&:to_s).include?(product.name)
-      end
+      applied_products = options.fetch(:products, nil)
+      raise 'You must send products which will be applied discount' if applied_products.nil?
+      applied_products
     end
   end
 end
